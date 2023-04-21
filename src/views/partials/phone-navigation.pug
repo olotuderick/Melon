@@ -1,0 +1,40 @@
+mixin PhoneNavigation(title)
+    header.phone-navigation
+        div.navigation-tools 
+            img(src="/uploads/icons/icon_menu.svg")#menu-icon
+            span=title
+            a(href="/search") 
+                img(src="/uploads/icons/search.svg")
+    aside#phone-screen-aside
+        .phone-screen-aside-header
+            img(src="/uploads/icons/x-icon.svg")#hide-phone-screen-aside
+            span Menu
+        #main-menu-content
+            .main-menu-content-header.phone-aside-content-header
+                a(href=`/`) Home
+            .main-menu-content-data 
+                img(src="/uploads/icons/Disc_.svg")
+                a(href="/trend") Top Charts
+            .main-menu-content-data 
+                img(src="/uploads/icons/search.svg")
+                a(href="/search") Search
+            .main-menu-content-data
+                img(src="/uploads/icons/users.svg")
+                a(href="#") Artist
+        #main-menu-content
+            .main-menu-content-header.phone-aside-content-header
+                a(href=`/library/`) My Library
+            .main-menu-content-data 
+                img(src="/uploads/icons/access-time.svg")
+                a(href="#") Recently Played
+            .main-menu-content-data 
+                img(src="/uploads/icons/star.svg")
+                a(href="/favourites") Favourite Song
+        #main-menu-content
+            .main-menu-content-header.phone-aside-content-header
+                a PLAYLIST
+                button#openBtn
+                    img(src="/uploads/icons/add_circle.svg")(data-song-obj="empty-playlist")
+            for userPlaylist in userPlaylists
+                .main-menu-content-data#aside-playlists-container
+                    a(href=`/playlist/${userPlaylist._id}`)=userPlaylist.playlistName

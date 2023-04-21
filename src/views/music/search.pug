@@ -1,0 +1,186 @@
+extends ../base
+include ../partials/aside
+include ../partials/phone-navigation
+
+block content
+    +Aside(userPlaylists)
+    include ../partials/phone-navigation
+    
+    #searchpage-center
+        //- div.nav-position
+        include ../partials/search-nav-options
+
+        //- nav.search-options 
+        //-     div.single-options 
+        //-         span.option-buttons  All
+        //-     div.single-options.two
+        //-         span.option-buttons  Artists 
+        //-     div.single-options.three
+        //-         span.option-buttons  Song
+        //-     div.single-options.four
+        //-         span.option-buttons  Podcasts & Shows
+        //-     div.single-options.five
+        //-         span.option-buttons  Playlist
+        //-     div.single-options.six
+        //-         span.option-buttons  Albums 
+        //-     div.single-options.seven
+        //-         span.option-buttons  Profiles
+        //-     div.single-options.eight
+        //-         span.option-buttons  Genres & Mood
+        //- h1.search-headers Recent Searches
+        //- section.recent-searches-wrapper#recent-searched-container 
+        //-     .recent-searches-container
+        //-         .recent-searches-container-img 
+        //-             img(src="/uploads/images/man-guitar.png", alt="").recent-img
+        //-             div.x-icon
+        //-                 img(src="/uploads/icons/x-circle.svg" )#deleteBtn
+        //-         .recent-searches-container-info
+        h1.search-headers Tracks
+        section.browse-all-wrapper-two
+            if searchEverything
+                for singleSearch in searchEverything
+                    a(href=`/artist/${singleSearch.artist.id}`, data-track-search-id=singleSearch)#recent-search
+                        .recent-searches-container.browse-all-container
+                            .recent-searches-container-img
+                                img(src=singleSearch.artist.picture_medium || searchEverything.artist.picture_big, alt="").browse-img
+                            .recent-searches-container-info
+                                h4.info-name #{singleSearch.artist.name}
+                                h3.info-head #{singleSearch.album.title}
+            else if !searchEverything
+                for singleTrack in searchTracks
+                    .recent-searches-container.browse-all-container
+                        .recent-searches-container-img
+                            img(src=singleTrack.artist.picture_medium || singleTrack.artist.picture_big, alt="").browse-img
+                        .recent-searches-container-info
+                            h3.info-name #{singleTrack.title}
+                            h4.info-head #{singleTrack.artist.name}
+        h1.search-headers.none Daily Mix
+        section.browse-all-wrapper-two
+            for singleTrack in searchTracks
+                    .recent-searches-container.browse-all-container.track(data-track-id=singleTrack.id)
+                        .recent-searches-container-img
+                            img(src=singleTrack.artist.picture_medium || singleTrack.artist.picture_big, alt="").browse-img
+                        .recent-searches-container-info
+                            h3.info-name #{singleTrack.title}
+                            h4.info-head #{singleTrack.artist.name}
+        h1.search-headers.none Playlists
+        section.browse-all-wrapper-two
+                for song in searchPlaylist
+                    a(href=`/library/${song.id}`) 
+                        .recent-searches-container.browse-all-container
+                            .recent-searches-container-img 
+                                img(src=song.picture_medium || song.picture_big, alt="").browse-img
+                            .recent-searches-container-info
+                                h4.info-name #{song.title}
+                                h3.info-head #{song.user.name}
+
+
+
+
+        //-tablet-componets starts here
+        div.middle-search-container
+            div.liked-songs-div-tablet
+                .liked-songcontainer 
+                div.liked_songs.tablet-cont
+                    img(src="/uploads/images/headphones", alt="")
+                    div.tablet-liked-infos
+                        h4 Liked Songs
+                        span #{likedSongs.length} liked Songs
+                div.right_arrow
+                    img(src="/uploads/icons/icon_forward.svg").right-arrow_img
+            //- .recent-searches-container.browse-all-container.tablet-cont.tab-card 
+            //-     .recent-searches-container-img 
+            //-         img(src=searchAlbums.albums.data[1].artist.picture_medium, alt="").browse-img.tab-img
+            //-     .recent-searches-container-info.recent-tab-info-container
+            //-         div.recent-tab-info
+            //-             h3 #{searchAlbums.albums.data[1].artist.name }
+            //-             h4 #{searchAlbums.albums.data[1].title}
+            //-         div.recent-tab-arrow
+            //-             a(href=`/artist/${searchAlbums.albums.data[1].id}`)
+            //-                 img(src="/uploads/icons/icon_forward.svg", alt="")
+        //- h1.search-headers Tracks
+        div.tablet-search-cards 
+            if searchEverything
+                for singleSearch in searchEverything
+                    a(href=`/artist/${singleSearch.artist.id}`) 
+                        .tablet-search-container 
+                            .tablet-img-holder
+                                img(src=singleSearch.artist.picture_medium || searchEverything.artist.picture_big, alt="").browse-img.tablet-photo
+                            .tablet-container-info 
+                                span #{singleSearch.album.title}
+                                h2 #{singleSearch.artist.name}
+            else
+                for song in searchPlaylist
+                    a(href=`/library/${song.id}`) 
+                        .tablet-search-container 
+                            .tablet-img-holder
+                                img(src=song.picture_medium || song.picture_big, alt="").browse-img.tablet-photo
+                            .tablet-container-info 
+                                span  #{song.title}
+                                h2 #{song.user.name} 
+
+
+
+    //- phone-screens start here
+    nav#search-phone-nav 
+        img(src="/uploads/icons/icon_close.svg")    
+        form(method="GET").search-input-field 
+            img(src="/uploads/icons/search.svg")
+            input(type="text" name='keyword' placeholder="Search for Music, Artist" class="input-text")
+        img(src="/uploads/icons/search.svg")    
+    main#search-phone-wrapper
+        
+        #search-artist-phone
+            h1.phone-header Artists
+            .phone-artist-carrier
+                for singleArtist in searchArtist
+                    a(href=`/artist/${singleArtist.id}`) 
+                        .search-carrier-artist-one 
+                            img(src=singleArtist.picture_medium || singleArtist.picture_big, alt="").recent-img
+                            span #{singleArtist.name}
+        
+        #search-albums-phone
+            h1.phone-header Playlist
+            .phone-album-carrier
+                if searchEverything
+                    for singleSearch in searchEverything
+                        a(href=`/artist/${singleSearch.artist.id}`) 
+                            .album-carrier-one
+                                img(src=singleSearch.artist.picture_medium || searchEverything.artist.picture_big, alt="").recent-img
+                                div.album-carrier-one-info
+                                    h3 #{singleSearch.album.title}
+                                    span #{singleSearch.artist.name}
+                else if !searchEverything
+                    for song in searchPlaylist
+                        a(href=`/library/${song.id}`) 
+                            .album-carrier-one
+                                img(src=song.picture_medium || song.picture_big, alt="").recent-img
+                                div.album-carrier-one-info
+                                    h3 #{song.title} 
+                                    span #{song.user.name}
+        #search-albums-phone
+            h1.phone-header Tracks
+            .phone-album-carrier
+                for singleTrack in searchTracks
+                    .album-carrier-one.track(data-track-id=singleTrack.id)
+                        img(src=singleTrack.artist.picture_medium || singleTrack.artist.picture_big, alt="").recent-img
+                        div.album-carrier-one-info
+                            span #{singleTrack.artist.name}
+                            h3 #{singleTrack.title}
+        
+        #search-albums-phone.search-albums-phone
+            h1.phone-header Podcasts 
+            .phone-album-carrier
+                for song in searchPlaylist
+                    a(href=`/library/${song.id}`) 
+                        .album-carrier-one
+                            img(src=song.picture_medium || song.picture_big, alt="").recent-img
+                            div.album-carrier-one-info
+                                h3 #{song.title}
+                                span #{song.user.name}
+
+    include ../partials/phone-nav-bottom.pug
+    include ../mixins/music-player
+
+//- block scripts 
+//-     script(src="/static/js/search.js")

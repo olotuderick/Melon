@@ -1,0 +1,73 @@
+extends ../base
+include ../partials/playlist-popup
+include ../partials/aside
+include ../partials/phone-navigation
+
+block content
+  +Aside(userPlaylists)
+  +PhoneNavigation("Library")
+  main.playlist-screen-side#library-phone-screen-side
+    include ../partials/nav-options
+
+    h2.playlist-home-heading Library
+    //- +PlaylistPopup(userPlaylists)
+    section.playlists-container
+      div.liked-songs-div
+        p Welcome to my musical sanctuary, where my liked songs come to life. From soul-stirring melodies to toe-tapping rhythms, this playlist is a window into my musical universe. Each track holds a special place in my heart, telling a story and creating an unforgettable soundtrack to my life's moments.
+        .liked-songcontainer 
+          div.liked_songs
+            img(src="/uploads/images/headphones", alt="")
+            h4 Liked Songs
+            h2 #{likedSongs.length} liked Songs
+          div.right_arrow
+            a(href="/favourites")
+              img(src="/uploads/icons/icon_forward.svg").right-arrow_img
+            //- +PlaylistPopup(userPlaylists)
+      .main-playlist-container
+        div.main-playlist-container-img
+          img(src=libraryPlaylists.playlists.data[0].picture_medium, alt="")
+        .playlist_info-container  
+          .playlist_info
+            span Trending Playlist
+            //- span #{libraryPlaylists.playlists.data[0].title}
+            //- h4 #{libraryPlaylists.playlists.data[0].user.name}
+          div.right_arrow
+            a(href="/library/main-playlist")
+              img(src="/uploads/icons/icon_forward.svg").right-arrow_img
+      .main-playlist-container
+        div.main-playlist-container-img
+            img(src=mainArtistPlaylist.picture_medium, alt="")
+        .playlist_info-container  
+          .playlist_info
+            span Trending Artists
+            //- span #{mainArtistPlaylist.name}
+            //- h4 Rank : #{mainArtistPlaylist.position}
+          div.right_arrow
+            a(href="/library/main-artist-playlist" )
+              img(src="/uploads/icons/icon_forward.svg").right-arrow_img
+      for userPlaylist in userPlaylists
+        .main-playlist-container
+          div.main-playlist-container-img
+            img(src='/uploads/images/dj-mixer.png', alt="")
+          .playlist_info-container  
+            a(href=`/playlist/${userPlaylist._id}`).playlist_info
+              //- span #{userPlaylist.playlistName}
+              span= userPlaylist.playlistName
+              //- h4 By : #{userPlaylist.playlistOwner.firstname}
+            div.right_arrow
+              a(href="/library/main-user-playlist" )
+                img(src="/uploads/icons/icon_forward.svg").right-arrow_img
+
+      for playlist in apiPlaylists
+        //- a(href=`/library/${playlist.id}`).album-card-wrapper
+        header.album-card-header 
+          h1 #{playlist.title}
+        a(href=`/library/${playlist.id}`).album-card-container
+          img.album-card-image(src=playlist.picture_medium || playlist.picture_big, alt="")
+          article.album-card-info
+            h4 #{playlist.title}
+            p #{playlist.user.name}
+      
+    include ../partials/phone-nav-bottom
+    include ../mixins/music-player
+

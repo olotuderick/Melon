@@ -1,0 +1,46 @@
+extends ../base
+include ../partials/aside
+include ../partials/phone-navigation
+
+block content
+  +Aside(userPlaylists)
+  +PhoneNavigation("Country Trends")
+  include ../mixins/music-player
+  main.playlist-screen-side
+    include ../partials/nav-options
+
+    h2.playlist-home-heading Country Trends
+    section.playlists-container
+      div.liked-songs-div.trend-songs-div
+        p 
+        div
+          h4 Trendings
+          span World wide
+      if tracksByCountry
+        each country in tracksByCountry
+          a(href=`/trend/${country.country}/${country.code}` data-country-photo=country.photo).visit-country.show-trends
+            div.album-card-container
+              img.album-card-image(src=country.photo, alt="")
+              article.album-card-info
+                h4= country.country
+
+
+  //- Phone-Trends
+  section#phone-trends-wrapper
+    h2.phone-trends-header Phone Trends
+    section.phone-trends-liked
+      div.trended-songs-div
+        p 
+        div
+          h4 Trendings
+          span World wide
+      if tracksByCountry
+        each country in tracksByCountry
+          .trend-card_carrier
+              a(href=`/trend/${country.country}/${country.code}` data-country-photo=country.photo)
+                .trend-data-carrier
+                  img(src=country.photo, alt="").carrier_image
+                  article.trend-carrier-info
+                    h4=country.country
+
+

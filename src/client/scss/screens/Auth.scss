@@ -1,0 +1,465 @@
+@import '../config/variables';
+
+#auth-page-login {
+  color: $orange;
+  font-size: 20px;
+  font-weight: 700;
+  margin-right: 25px;
+}
+
+.auth-main-screen {
+  display: flex;
+  height: 100vh;
+  background-color: $orange;
+
+  section:first-child {
+    width: 60%;
+    background-color: $orange;
+    background-image: url('https://source.unsplash.com/featured/?music');
+    background-size: cover;
+    background-position: center center;
+  }
+
+  //Second Column
+  section:last-child {
+    width: 40%;
+    background-color: $bg;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .forms-div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      hgroup {
+        display: flex !important;
+        align-items: center;
+        flex-direction: column;
+      }
+      h2 {
+        font-weight: 700;
+        font-size: 40px;
+        text-align: center;
+        letter-spacing: 0.01em;
+        line-height: 120%;
+      }
+      form {
+        position: relative;
+        width: 340px;
+        justify-content: space-between;
+        margin-top: 35px;
+        .email-err {
+          position: relative;
+          top: -13px;
+          left: 17px;
+          margin-bottom: -27px;
+          font-size: 13px;
+          color: red;
+        }
+        .password-err {
+          position: relative;
+          top: -13px;
+          left: 17px;
+          margin-bottom: -27px;
+          font-size: 13px;
+          color: red;
+        }
+        .username-err {
+          position: relative;
+          top: -10px;
+          left: 17px;
+          margin-bottom: -27px;
+          font-size: 13px;
+          color: red;
+        }
+        input,
+        select {
+          padding: 7px 15px;
+          font-size: 15px;
+          background-color: transparent;
+          outline: none;
+          color: white;
+          border: solid 1px $orange;
+          border-radius: 20px;
+          &::placeholder {
+            color: white;
+            opacity: 0.6;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+          }
+        }
+        button {
+          position: absolute;
+          bottom: -80px;
+          width: 100% !important;
+          padding: 10px;
+          border-radius: 20px;
+          background-color: #fff4e3;
+          color: #bfc6cc;
+          border: none;
+          font-size: 20px;
+        }
+      }
+      #column-form {
+        display: flex;
+        flex-direction: column;
+        height: 145px;
+      }
+      #row-form {
+        display: flex;
+        width: 380px;
+        input,
+        select {
+          width: 45%;
+          padding: 7px 10px;
+          display: flex;
+          justify-content: center;
+        }
+      }
+      .password-form {
+        height: 85px !important;
+      }
+      .last-form {
+        height: 30px !important;
+      }
+    }
+
+    .or-column {
+      margin-top: 120px;
+      width: 380px;
+      display: flex;
+      justify-content: space-between;
+      span {
+        letter-spacing: 0.01em;
+        font-weight: 200;
+        font-size: 32px;
+      }
+      div {
+        border-top: solid 1px white;
+        width: 44%;
+        margin-top: 4.7%;
+      }
+    }
+
+    .google-icon {
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      position: relative;
+      bottom: -50px;
+      overflow: hidden;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        height: 75%;
+        width: 75%;
+      }
+    }
+
+    .finished {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+      height: 350px;
+      h2 {
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 120%;
+        letter-spacing: 0.01em;
+      }
+      span {
+        font-weight: 300;
+        font-size: 22px;
+        line-height: 160%;
+        width: 338px;
+        letter-spacing: -0.01em;
+      }
+      img {
+        margin-top: 35px;
+        height: 170px;
+        width: 185px;
+      }
+    }
+  }
+}
+// Tablet
+@media only screen and (max-width: 1024px) {
+  .auth-main-screen {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://source.unsplash.com/featured/?music');
+    background-size: cover;
+    background-position: center center;
+  }
+  section:last-child {
+    border-radius: 30px;
+    height: 626px;
+    padding: 24px 90px;
+    .forms-div {
+      h2 {
+        width: 500px;
+      }
+      button:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  section:first-child {
+    display: none;
+  }
+}
+
+// Phone
+@media only screen and (max-device-width: 460px) {
+  .back-btn,
+  .phone-head {
+    display: block !important;
+  }
+  .auth-main-screen {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-image: none !important;
+  }
+  #melon-main-body-header {
+    background-color: transparent !important;
+    width: 75%;
+    .logo img,
+    .logo h1 {
+      display: none;
+    }
+
+    #auth-page-login {
+      display: none;
+    }
+    .back-btn {
+      width: 24px !important;
+    }
+    h1 {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 18px;
+      text-align: center;
+      color: $orange;
+    }
+  }
+  .phone-melon_head {
+    position: fixed;
+    top: 10px;
+    display: block;
+    height: 46px;
+  }
+  /*   section:last-child {
+    border-radius: 30px;
+    height: 600px;
+    padding: 24px 90px;
+    .forms-div {
+      h2 {
+        width: 500px;
+      }
+      button:hover {
+        cursor: pointer;
+      }
+    }
+  } */
+  section:first-child {
+    width: 60%;
+    display: none;
+  }
+
+  section:last-child {
+    width: 100% !important;
+    height: 100% !important;
+    background-color: $bg;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .forms-div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100% !important;
+      min-height: 525px;
+      hgroup {
+        display: flex !important;
+        align-items: center;
+        flex-direction: column;
+        width: 100% !important;
+        height: 50% !important;
+        margin-top: -50px;
+        margin-bottom: 50px;
+      }
+      img {
+        height: 150px;
+        margin-bottom: 25px;
+      }
+      h2 {
+        font-weight: 700;
+        font-size: 50px !important;
+        text-align: center;
+        letter-spacing: 0.01em;
+        line-height: 120%;
+        width: 100% !important;
+      }
+      form {
+        position: relative;
+        width: 85% !important;
+        justify-content: space-between;
+        margin-top: 35px;
+        input {
+          height: 65px !important;
+          margin: 10px 0px;
+        }
+        .email-err,
+        .password-err,
+        .username-err {
+          font-size: 25px !important;
+          top: -17px !important;
+          letter-spacing: 0.07rem !important;
+        }
+        .email-err {
+          top: -13px !important;
+        }
+        input,
+        select {
+          padding: 7px 15px;
+          font-size: 27px !important;
+          background-color: transparent;
+          outline: none;
+          color: white;
+          border: solid 2px $orange;
+          border-radius: 50px !important;
+          letter-spacing: 0.07rem;
+          &::placeholder {
+            color: white;
+            opacity: 0.6;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+          }
+        }
+        button {
+          position: absolute;
+          bottom: -175px !important;
+          width: 100% !important;
+          padding: 27px !important;
+          border-radius: 50px !important;
+          background-color: #fff4e3;
+          color: #bfc6cc;
+          border: none;
+          font-size: 38px !important;
+        }
+      }
+      #column-form {
+        display: flex;
+        flex-direction: column;
+        height: 50% !important;
+      }
+      #row-form {
+        display: flex;
+        width: 380px;
+        input,
+        select {
+          // width: 45%;
+          padding: 7px 10px;
+          display: flex;
+          justify-content: center;
+        }
+      }
+      .password-form {
+        height: 85px !important;
+      }
+      .last-form {
+        height: 30px !important;
+      }
+    }
+    .final-form-div {
+      form {
+        .username-err {
+          top: -115px !important;
+        }
+        button {
+          bottom: -100px !important;
+        }
+      }
+    }
+  }
+
+  .or-column {
+    margin-top: 200px !important;
+    width: 80% !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center !important;
+    span {
+      letter-spacing: 0.01em;
+      font-weight: 200;
+      font-size: 42px !important;
+    }
+    div {
+      border-top: solid 1px white;
+      width: 85% !important;
+      margin-top: unset !important;
+      &:first-child {
+        margin-right: 7px;
+      }
+      &:last-child {
+        margin-left: 7px;
+      }
+    }
+  }
+
+  .google-icon {
+    height: 80px !important;
+    width: 80px !important;
+    border-radius: 50%;
+    position: relative;
+    bottom: -50px;
+    overflow: hidden;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      height: 75%;
+      width: 75%;
+    }
+  }
+
+  .finished {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    height: 350px;
+    h2 {
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 120%;
+      letter-spacing: 0.01em;
+    }
+    span {
+      font-weight: 300;
+      font-size: 22px;
+      line-height: 160%;
+      width: 338px;
+      letter-spacing: -0.01em;
+    }
+    img {
+      margin-top: 35px;
+      height: 170px;
+      width: 185px;
+    }
+  }
+}

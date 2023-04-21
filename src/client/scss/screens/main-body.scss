@@ -1,0 +1,121 @@
+@import '../config/variables';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+#main-body-screen {
+  height: 100vh;
+
+  //  background-image: url('/uploads/bg.png');
+
+  min-height: 100vh;
+  background-color: $orange;
+  background-image: url('http://localhost:4000/uploads/images/dj-mixer.png');
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  padding-left: 50px;
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 25px;
+    gap: 20px;
+    background: #38343d;
+    height: 347px;
+    width: 634px;
+    border-radius: 30px;
+    div {
+      display: flex;
+      align-items: flex-end;
+      img {
+        margin-right: 15px;
+        // width: 52px;
+        // height: 65px;
+      }
+      h2 {
+        color: $orange;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 56px;
+        letter-spacing: 0.01em;
+      }
+    }
+    .welcome-text {
+      height: 168px;
+      p {
+        font-family: 'Poppins', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 130%;
+      }
+    }
+    a {
+      font-weight: 700;
+      font-size: 20px;
+      color: $orange;
+      border: solid 1px $orange;
+      padding: 10px 35px;
+      border-radius: 25px;
+      transition: all 0.25s ease-in-out;
+      &:hover {
+        background-color: $orange;
+        color: white;
+      }
+    }
+  }
+  @media only screen and (max-width: 1024px) and (min-device-width: 460px) {
+    section {
+      animation: downwards 1s ease-in-out forwards;
+      @keyframes downwards {
+        from {
+          margin-top: 0vmax;
+        }
+        to {
+          margin-top: 50vmax;
+        }
+      }
+    }
+  }
+}
+
+// Phone
+@media only screen and (max-device-width: 460px) {
+  #main-body-screen {
+    padding: 0px 13px !important;
+    background-image: url('http://localhost:4000/uploads/images/man.jpg') !important;
+    background-position: center;
+    min-height: 100svh !important;
+  }
+  .welcome-section {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 330px !important;
+    // padding: 25px !important;
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-around;
+    .welcome-melon_logo {
+      display: flex;
+      align-items: flex-end;
+      img {
+        width: 44px;
+        height: 53px;
+      }
+      h2 {
+        font-size: 40px !important;
+      }
+    }
+    .welcome-text {
+      height: unset !important;
+    }
+    p {
+      font-size: 35px !important;
+    }
+    .get-started_btn {
+      font-size: 35px !important;
+      padding: 17px 35px !important;
+    }
+  }
+}

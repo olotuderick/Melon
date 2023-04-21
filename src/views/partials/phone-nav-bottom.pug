@@ -1,0 +1,26 @@
+div.music-details.normal-screen.phone-player
+    div.song-details
+        div
+            img(src="https://www.freeiconspng.com/uploads/black-disco-cd-music-icon-png-6.png").playing-music-cover
+        div.song-head
+            h2.playing-music-name
+            p.playing-music-artist
+    div.song-progress
+        input.music-range.song-progress#full-screen-music-range(type='range' min='0' max='100' value='0')
+nav#phone-bottom-navigation
+    div.nav-tools
+        a(href="/").nav.home
+            img(src="/uploads/icons/icon-home.svg")
+            span Home
+        a(href="/search").nav.search
+            img(src="/uploads/icons/search.svg")
+            span Search
+        div.nav.play
+            div.play-circle#toogle-play-song
+                img(src="/uploads/icons/play-icon.svg").play-icon#play-song-icon
+        a(href="/library").nav.disc
+            img(src="/uploads/icons/Disc_.svg")
+            span Libraries
+        div.nav.profile
+            img(src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png")#profile-photo
+            span Profile

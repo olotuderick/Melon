@@ -1,0 +1,28 @@
+div.player
+  div.music-details
+    img(src='https://www.freeiconspng.com/uploads/black-disco-cd-music-icon-png-6.png').music-cover.playing-music-cover
+    div.music-description
+      h2.music-name.playing-music-name
+      span.music-artist.playing-music-artist
+  div.player-controls
+    div.shuffle-control
+      img(src="/uploads/icons/shuffle.svg")#toogle-shuffle
+    img(src="/uploads/icons/prev.svg").prev-control#prev-control
+    div.play-control#toogle-play-song
+      audio#audioElement
+      img(src="/uploads/icons/play-icon.svg")#play-song-icon
+    img(src="/uploads/icons/next.svg").next-control#next-control
+    div.repeat-control#repeat-song
+      img(src="/uploads/icons/no-repeat.svg")#repeat-song-icon
+  
+  
+  div.music-input_length
+    span.current-time.playing-current-time 0:00
+    input.music-range.song-progress(type='range' min='0' max='100' value='0')
+    span.total-time.playing-total-time 0:00
+  div.right-options
+    div.volume
+      img(src="/uploads/icons/volume-up.svg")#toogle-mute
+      input.music-range(type='range' min="0" max="1" step="0.01" value="0.0")#volumeSlider
+    div.share#instagram-share-btn
+      img(src="/uploads/icons/share.svg")

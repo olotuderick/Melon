@@ -1,0 +1,182 @@
+@import '../config/variables';
+
+#main-menu {
+  padding: 20px 30px;
+  width: 300px;
+  margin-top: 75px;
+  background-color: $bg;
+/*   height: calc(100vh - 230px) !important; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  overflow-y: scroll;
+  .logo-wrapper {
+    width: 300px;
+    position: fixed;
+    background-color: $bg;
+    width: 345px;
+    top: 0%;
+    left: 0%;
+    padding-left: 17px;
+    padding-top: 1%;
+    padding-bottom: 20px;
+    .logo {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      img {
+        margin-right: 7px;
+        width: 52px;
+        height: 65px;
+      }
+      #melon-heading {
+        font-size: 35px;
+        color: $orange;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 700;
+        margin-top: 8px;
+        letter-spacing: 0.01em;
+      }
+    }
+  }
+
+  #playing-music_details-tablet {
+    display: none;
+  }
+}
+
+
+.main-menu-content-title {
+  margin-top: 35px;
+  color: #ffffff;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.333333px;
+}
+#main-menu-content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 35px;
+  cursor: pointer;
+  .main-menu-content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 191px;
+    height: 21px;
+    a {
+      background-color: transparent;
+      outline: none;
+      border: none;
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 140%;
+      letter-spacing: -0.333333px;
+      text-transform: capitalize;
+      color: white;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    :focus-within {
+      color: $orange;
+    }
+  }
+  .main-menu-content-data {
+    display: flex;
+    align-items: center;
+    width: 170px;
+    margin: 20px 0px;
+    :hover {
+      color: $orange;
+    }
+    img {
+      color: #ffffff;
+      width: 20px;
+      height: 20px;
+    }
+    a {
+      margin: 0px 10px;
+      width: 140px;
+      height: 21px;
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 140%;
+      letter-spacing: -0.333333px;
+      text-transform: capitalize;
+      color: #ffffff;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-device-width: 460px) {
+  #main-menu {
+/*     height: calc(100% - 245px) !important;
+    border-bottom: solid calc(100% - 245px) $bg !important; */
+    border-bottom: solid 350px $bg;
+    width: 250px !important;
+    #playing-music_details-tablet {
+      width: 270px !important;
+      height: 230px;
+      position: fixed !important;
+      bottom: 115px !important;
+      z-index: 5 !important;
+      display: inline;
+      .music-details-tablet {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: start !important;
+        .music-cover {
+          width: 100%;
+          height: 175px;
+          border-radius: 6px;
+          margin-right: 7px;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 6px;
+          }
+        }
+        .music-description {
+          font-family: 'Poppins';
+          font-style: normal;
+          line-height: 140%;
+          padding: 13px 0px 0px 10px;
+          .music-name {
+            font-weight: 600;
+            font-size: 22px;
+          }
+          .music-artist {
+            font-weight: 300;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            letter-spacing: 0.0041em;
+            line-height: 40px;
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+  .logo-wrapper {
+    width: 295px !important;
+  }
+}
+//phone
+@media screen and (max-device-width: 460px) {
+  #main-menu {
+    display: none !important;
+  }
+}

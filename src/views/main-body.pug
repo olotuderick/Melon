@@ -1,0 +1,22 @@
+extends base
+
+block content
+  header#melon-main-body-header
+    a(href="/main-body")
+      div.logo
+        img(src="/uploads/Melon.png")
+        h1#melon-heading Melon Music
+
+    div#auth-links-container
+      a(href="/login") Log In
+      a(href="/authentication") Sign Up
+
+  main#main-body-screen
+    section.welcome-section
+      div.welcome-melon_logo
+        img(src="/uploads/Melon.png")
+        h2 Melon Music
+      div.welcome-text
+        p Welcome to the music community - where notes, rhythms, and melodies come together to create something beautiful. 
+      a(href="/authentication").get-started_btn Get Started
+  

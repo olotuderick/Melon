@@ -1,0 +1,48 @@
+mixin HomeScreenPhone(trendingArtists, playlists,trendingSongs)
+    main#Home-main-phone-screen.normal-screen
+      div#artist-main-container-phone
+        hgroup#hgroup-phone 
+          h3 Trending Artists
+          a(href="#").see-more See more
+        article#artists-slider-phone
+          for artist in trendingArtists
+            a(href=href=`/artist/${artist.id}`) 
+              div.artist-slide-phone
+                img(src=artist.picture_medium, alt="").artist-image-phone
+                .artist-description-phone 
+                  h5.artist-name-phone #{artist.name}
+                  span.album-artists-phone Click here to visit this artist's track list 
+
+      div#playlist-main-container-phone
+        hgroup#hgroup-phone 
+          h3 Playlists
+          a(href="#").see-more See more
+        article#playlists-slider-phone 
+          for playlist in playlists
+            a(href=`/library/${playlist.id}`)
+              div.playlist-slide-phone
+                .playlist-image-phone
+                  img(src=playlist.picture_medium || playlist.picture_big, alt="")
+                .playlist-description-phone 
+                  h5.playlist-name-phone #{playlist.title}
+                  span.playlist-artists-phone #{playlist.user.name}
+
+      div#topcharts-main-container-phone
+        hgroup#hgroup-phone 
+          h3 Top Charts
+          a(href="#").see-more See more
+        for song in trendingSongs
+          article.trends
+            div.trend
+                div.trend-head.track(data-track-id=song.id)
+                    img(src=song.album.cover_small).trend-cover
+                    div.trend-description
+                      h2.trend-name #{song.title}
+                      span.trend-artist #{song.artist.name}
+                div.trend-options
+                  img(src="/uploads/icons/heart.svg")#favourite-song-icon.like(data-song-obj=song)
+                  span.trend-length#song-duration #{song.duration}
+                  button#openBtn(type='button')
+                    img(src="/uploads/icons/add_circle.svg")(data-song-obj=song)
+
+    include ../music/full-screen-player

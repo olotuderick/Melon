@@ -1,0 +1,39 @@
+doctype html
+html(lang="en")
+    head
+        title #{pageTitle} | #{siteName}
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css")
+        link(rel="stylesheet", href="/static/css/styles.css")
+        //- link(rel="icon",type="image/svg", href="/uploads/Melon.png")
+        //- meta(name='google-signin-client_id' content='942417949950-f74ir38dbm1ssgtpgi7ul5i7hme4rhcl.apps.googleusercontent.com')
+        script(src='https://apis.google.com/js/platform.js' async defer)
+    body
+        span#response-messages
+        main
+            div#background.background
+            div.modal
+                div
+                    header#close 
+                        img(src="/uploads/icons/icon_close.svg")#closer
+                    header#close-tablet
+                        img(src="/uploads/icons/icon_close.svg")#closer
+                        span create a new playlist 
+                        img(src="/uploads/icons/hovered_add_circle.svg")
+                    ul.modal-options
+                        if userPlaylists
+                            for userPlaylist in userPlaylists
+                                li.modal-option-one(data-playlist-id=userPlaylist._id)
+                                    img(src="/uploads/icons/list-outlined.svg")
+                                    span=userPlaylist.playlistName
+                        if !userPlaylists || userPlaylists.length === 0
+                            h2 There are no created Playlists
+                div.modal-create-playlist#create-playlist-button
+                    img(src="/uploads/icons/hovered_add_circle.svg")
+                    span Create a new playlist 
+                form#create-playlist-form
+                    input(type="text", placeholder="Playlist name").input
+                    input(type="submit", value="Create").button
+                
+            block content
+    script(src="/static/js/main.js") 
+    block scripts

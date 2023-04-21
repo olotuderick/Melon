@@ -1,0 +1,279 @@
+@import '../config/variables';
+
+#library-phone-screen-side{
+  display: block !important;
+}
+
+.playlist-screen-side {
+  margin-left: 370px;
+  background-color: #2b2b2b;
+  border-bottom: solid 15px #2b2b2b;
+  height: 85vh;
+  position: absolute;
+  top: 0%;
+  width: calc(100% - 400px);
+  padding: 20px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  .playlist-home-heading {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 120%;
+    align-items: center;
+    letter-spacing: 0.01em;
+    margin-bottom: 20px;
+  }
+  .playlists-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 17px;
+    .liked-songs-div {
+      width: 440px;
+      padding: 0 25px;
+      height: 328px;
+      background-image: url('http://localhost:4000/uploads/images/headphones.jpg');
+      background-position: center center;
+      background-size: cover;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      p {
+        width: 429px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 150%;
+        align-self: stretch;
+        margin-top: 40px;
+      }
+      div {
+        h4 {
+          width: 221px;
+          height: 51px;
+          font-weight: 700;
+          font-size: 36px;
+          line-height: 140%;
+        }
+        h2{
+          font-size: 30px;
+        }
+        p {
+          font-weight: 400;
+          font-size: 20px;
+          width: 52px;
+          height: 17px;
+        }
+      }
+    }
+    .album-card-container {
+      height: 300px;
+      width: 217px;
+      padding: 10px;
+      background-color: $bg;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      flex-grow: 1;
+      transition: all 0.3s;
+      &:hover {
+        background-color: $orange;
+      }
+      .album-card-image {
+        height: 70%;
+        width: 100%;
+        object-fit: cover;
+        object-position: top;
+        background-color: #2b2b2b;
+        border-radius: 12px;
+      }
+      .album-card-info {
+        width: 100%;
+        h4 {
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 140%;
+          margin-bottom: 10px;
+        }
+        p {
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 140%;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-device-width: 460px) {
+  .playlist-screen-side {
+    margin-left: 0px;
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: 300px;
+    .playlist-home-heading {
+      display: none;
+    }
+
+    .playlists-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      gap: 17px;
+      margin-top: 240px;
+      .liked-songs-div {
+        width: 90%;
+        height: 30vh;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 75px;
+        justify-content: flex-end;
+        .liked-songcontainer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+          margin-bottom: 75px !important;
+          .liked-songs {
+            display: flex;
+            flex-direction: column;
+          }
+        }
+
+        p {
+          display: none;
+        }
+      }
+    }
+    .main-playlist-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 87%;
+      height: 30vh;
+      border-radius: 50px;
+      // background-color: green;
+      background: linear-gradient(
+        180deg,
+        rgba(67, 78, 88, 0) 56.77%,
+        #38343d 77.08%
+      );
+      margin-bottom: 70px;
+      .main-playlist-container-img {
+        width: 100%;
+        height: 26vh;
+        border-radius: 50px;
+        background-position: top;
+        object-fit: inherit;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: top;
+          border-radius: 50px;
+        }
+      }
+      .playlist_info-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 30px;
+        .playlist_info {
+          display: flex;
+          flex-direction: column;
+          font-family: 'Poppins';
+          color: #ffffff;
+
+          span {
+            font-weight: 700;
+            font-size: 30px;
+            line-height: 140%;
+          }
+          h4 {
+            font-weight: 400;
+            font-size: 25px;
+            line-height: 140%;
+            letter-spacing: 0.0041em;
+          }
+        }
+      }
+    }
+
+    .album-card-header {
+      display: flex;
+      margin-top: 20px;
+      width: 80%;
+      display: none;
+      h1 {
+        color: #ffffff;
+        height: 28px;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 140%;
+        display: flex;
+        align-items: center;
+      }
+    }
+    .album-card-container {
+      width: 90% !important;
+      height: 30vh !important;
+      object-fit: fill !important;
+      margin-top: 20px !important;
+      border-radius: 50px !important;
+      margin-bottom: 0px;
+      display: none !important;
+      .album-card-info {
+        padding: 10px 0px;
+        margin-left: 60px;
+        font-family: 'Poppins';
+
+        h4 {
+          font-weight: 700;
+          font-size: 18px;
+          line-height: 140%;
+        }
+        p {
+          font-weight: 400;
+          font-size: 10px;
+          line-height: 140%;
+          letter-spacing: 0.0041em;
+          color: #ffffff;
+        }
+      }
+      .album-card-image {
+        border-radius: 50px !important;
+        height: 85% !important;
+      }
+    }
+    .playlist-main-container {
+      display: flex;
+    }
+  }
+}
+
+@media only screen and (min-device-width: 461px) {
+  .phone-navigation {
+    display: none;
+  }
+  .right_arrow {
+    display: none;
+  }
+  #phone-bottom-navigation {
+    display: none;
+  }
+  .album-card-header {
+    display: none;
+  }
+  .playlist-main-container {
+    display: none;
+  }
+  .main-playlist-container {
+    display: none;
+  }
+}

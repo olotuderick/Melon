@@ -1,0 +1,76 @@
+extends ../base
+
+block content
+
+  header#melon-main-body-header
+    a(href="/main-body")
+      div.logo
+        img(src="/uploads/icons/chevron-left.svg").back-btn
+        img(src="/uploads/Melon.png")
+        h1#melon-heading Melon Music
+    h1.phone-head Create Your Account
+    a(href="/login")#auth-page-login Log In
+
+
+  main.auth-main-screen 
+    section 
+    section
+      
+      if displayForm === "FirstForm"
+        div.forms-div
+          hgroup
+            img(src="/uploads/Melon.png")
+            h2 Step 1:
+            h2 Create Your Free Account.
+          form#column-form.first-form(method="POST")
+            input(type="text" placeholder="First name" name="firstName" value=`${firstName ? firstName : ""}`)
+            input(type="text" placeholder="Last name" name="lastName" value=`${lastName ? lastName : ""}`)
+            input(type="email" placeholder="example@gmail.com" name="email" value=`${email ? email : ""}`)
+            if emailErr
+              span.email-err #{emailErr}
+            button Next
+
+      if displayForm === "PasswordForm"
+        div.forms-div
+          hgroup
+            img(src="/uploads/Melon.png")
+            h2 Step 2: 
+            h2 Create your password.
+          form#column-form.password-form(method="POST")
+            input(type="password" placeholder="Password" name="password" value=`${password ? password : ""}`)
+            input(type="password" placeholder="Confirm Password" name="passwordConfirmation" value=`${passwordConfirmation ? passwordConfirmation : ""}`)
+            if passwordErr
+              span.password-err #{passwordErr}
+            button Next
+
+      if displayForm === "FinalForm"
+        div.forms-div.final-form-div
+          hgroup
+            img(src="/uploads/Melon.png")
+            h2 Final Step: 
+            h2 What should we call you?.
+          form#column-form.last-form(method="POST")
+            input(type="text" placeholder="Name" name="username" value=`${username ? username : ""}`)
+            if usernameErr
+              span.username-err #{usernameErr}
+            button Complete
+
+
+      if displayForm === "FirstForm"
+        .or-column
+          div
+          span or 
+          div
+        a(href="/auth/google")
+          div.google-icon 
+              img(src="https://imgs.search.brave.com/CCxIKOJMgFeXqwuYyO5BxbrYabKsQQju_Yixw4z55S8/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2Uy/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5I/RzZYdHpJeGY0TmJv/X3ZadDhUM0VBSGFI/YSZwaWQ9QXBp", alt="")
+
+
+      if displayForm === "CompletedSignUp"
+        div.finished
+          h2 Congratulations
+          span Your account was successful created.
+          img(src="/uploads/vector.png", alt="")
+
+block scripts
+  script(src="/static/js/signup.js")

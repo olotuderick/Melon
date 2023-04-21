@@ -1,0 +1,61 @@
+extends ../base
+include ../partials/aside
+include ../partials/phone-navigation
+
+block content
+  +Aside(userPlaylists)
+  main.playlist-screen-side#library-phone-screen-side
+    h2.playlist-home-heading Library
+    +PhoneNavigation("Main Playlists")
+    section.playlists-container.main-playlist-screen-container
+        .main-playlist-container
+            if songType ==='mainPlaylist'
+                img(src=libraryPlaylists.playlists.data[0].picture_medium, alt="").main-playlist-container-img
+            if songType === 'mainArtistPlaylist'
+                img(src='/uploads/images/dj-mixer.png', alt="").main-playlist-container-img
+            if songType  ==='createdPlaylist'
+                img(src='/uploads/images/dj-mixer.png', alt="").main-playlist-container-image
+                
+
+                if songType ==='mainPlaylist'
+                    div.right_arrow
+                        a(href="/library/main-playlist" )
+                            //- img(src="/uploads/icons/icon_forward.svg").right-arrow_img
+                if songType === 'mainArtistPlaylist'
+                    div.right_arrow
+                        a(href="/library/main-artist-playlist" )
+                            //- img(src="/uploads/icons/icon_forward.svg").right-arrow_img
+        main.main-playlist-inventory
+            if songType ==='mainPlaylist'
+                for playlist in apiPlaylists 
+                    .inventory-list
+                        a(href=`/library/${playlist.id}`).album-card-container.main-playlist-card-container
+                            img.album-card-image(src=playlist.picture_medium || playlist.picture_big, alt="")
+                            article.album-card-info.main-playlist-card-info
+                                h4 #{playlist.title}
+                                p #{playlist.user.name}
+
+            if songType === "createdPlaylist"
+                for userPlaylist in userPlaylists
+                    .inventory-list
+                        a(href=`/playlist/${userPlaylist._id}`).album-card-container.main-playlist-card-container
+                            img.album-card-image(src="/uploads/images/dj-mixer.png", alt="")
+                            article.album-card-info.main-playlist-card-info
+                                h4 #{userPlaylist.playlistName}
+
+            if songType ==='mainArtistPlaylist'
+                for artist in mainArtistPlaylist
+                    .inventory-list
+                        a(href=`/artist/${artist.id}`).album-card-container.main-playlist-card-container
+                            img.album-card-image(src=artist.picture_medium || artist.picture_big, alt="")
+                            article.album-card-info.main-playlist-card-info
+                                h4 #{artist.name}
+                                p Position : #{artist.position}
+            .add-new
+                .add-new-container
+                    img(src="/uploads/icons/icon-plus.svg")#openBtn 
+                    span Add new playlist
+
+
+
+    include ../partials/phone-nav-bottom

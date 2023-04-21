@@ -1,0 +1,50 @@
+extends ../base
+include ../partials/playlist-popup
+include ../partials/aside
+include ../partials/phone-navigation
+
+block content 
+    +Aside(userPlaylists)
+    #home-page-container.normal-screen.playlist-main-page-container
+        +PhoneNavigation(`${name} Trends`)
+        div.playlist-background.playlist-main-songs-component
+            include ../partials/nav-options
+            section#now-playing-playlist 
+                div.img
+                    img(src="/uploads/images/dj-mixer.png", alt="")
+                
+                div.now-playing-details
+                    span.playlist-type Country trend
+                    span.playlist-name #{name} 
+            section#playlist-controller 
+                div.playlist-left-options.play-control#toogle-play-song
+                    img(src="/uploads/icons/play-icon.svg")#play-song-icon
+            header.songlist-header
+                span Title
+                span Album
+            main#general-song-list
+                for song in tracks
+                    div.single-song-main-holder
+                        div.specific-song.track(data-track-id=song)
+                            .specific-song-img
+                                img(src=song.album.cover)
+                                div.specific-song-details
+                                    span.specific-song-name #{song.title}
+                                    a(href=`/artist/${song.artist.id}`).specific-artist-name #{song.artist.name}
+                            .album-name 
+                                //- a(href=`/albums/${song.likedSong.albumId}`) #{song.likedSong.songAlbum}
+                                
+                        div.single-song-more-actions
+                            img(src="/uploads/icons/favourite.svg")#favourite-song-icon(data-song-obj=song)
+                            span#song-duration #{song.duration}
+                            button#openBtn
+                                if songType === "favourites"
+                                    img(src="/uploads/icons/add_circle.svg")(data-song-obj=song.likedSong)
+                                if songType !== "favourites"
+                                    img(src="/uploads/icons/add_circle.svg")(data-song-obj=song)
+            
+        include ../partials/phone-nav-bottom
+    include ../mixins/music-player
+    include ../music/full-screen-player
+
+block scripts 

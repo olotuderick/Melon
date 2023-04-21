@@ -1,0 +1,315 @@
+@import '../config/variables';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+::-webkit-scrollbar {
+  display: none;
+}
+#home-page-container {
+  display: flex;
+  // padding-bottom: 77px;
+  #homepage-center {
+    padding: 10px 30px;
+    padding-bottom: 35px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 425px);
+    margin-left: 365px;
+    background-color: #2b2b2b;
+    position: relative;
+    min-height: 100vh;
+
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding: 0px 0px 15px 0px;
+      .head {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        // line-height: 140%;
+        color: #ffffff;
+      }
+      .see-more {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 15px;
+        line-height: 24px;
+        letter-spacing: -0.01em;
+        color: $orange;
+      }
+    }
+    .new-albums {
+      margin-top: 10px;
+      grid-row: 1 / 2;
+      grid-column: 1 / 3;
+      .albums {
+        display: flex;
+        align-items: center;
+        overflow: auto;
+        width: 100%;
+        height: 400px;
+
+        .album {
+          padding: 14px 11px;
+          border-radius: 12px;
+          width: 272px;
+          // height: 344px;
+          cursor: pointer;
+          transition: all 0.3s;
+          flex-shrink: 0;
+          &:not(:last-child) {
+            margin-right: 20px;
+          }
+          &:hover {
+            background: #ff9800;
+          }
+          .album-cover {
+            border-radius: 12px;
+            width: 100%;
+            height: 270px;
+          }
+          .album-description {
+            margin-top: 19px;
+            .album-name {
+              font-family: 'Poppins';
+              font-style: normal;
+              font-weight: 700;
+              font-size: 20px;
+              line-height: 140%;
+              margin-bottom: 12px;
+              letter-spacing: 0.03em;
+            }
+            .album-artists {
+              font-family: 'Poppins';
+              font-style: normal;
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 140%;
+              letter-spacing: 0.0041em;
+              color: rgba($color: #e6e6e7, $alpha: 0.6);
+              overflow: hidden;
+              text-overflow: ellipsis;
+              display: -webkit-box;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
+              &:hover {
+                text-decoration: underline;
+                color: white;
+              }
+            }
+          }
+        }
+      }
+    }
+    .bottom {
+      grid-row: 2 / 4;
+    }
+    .top-trending {
+      grid-column: 1 / 2;
+      margin-top: 20px;
+      margin-right: 10px;
+      height: 540px;
+      overflow: auto;
+      position: relative;
+      .section-header {
+        position: sticky;
+        top: 0;
+        background-color: #2b2b2b;
+      }
+      .trends {
+        &:not(:last-child) {
+          margin-bottom: 18px;
+        }
+        .trend {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          cursor: pointer;
+          background: $bg;
+          box-shadow: 0px 5px 40px rgba(108, 126, 147, 0.1);
+          border-radius: 10px;
+          padding: 5px;
+          transition: all 0.3s;
+          .trend-head {
+            display: flex;
+            align-items: center;
+            .trend-cover {
+              width: 60px;
+              height: 60px;
+              border-radius: 5.4px;
+              margin-right: 7px;
+            }
+            .trend-description {
+              font-family: 'Poppins';
+              font-style: normal;
+              line-height: 140%;
+              .trend-name {
+                font-weight: 600;
+                font-size: 18px;
+              }
+              .trend-artist {
+                font-weight: 300;
+                font-size: 14px;
+                display: flex;
+                align-items: center;
+                letter-spacing: 0.0041em;
+                color: #ffffff;
+              }
+            }
+          }
+          .trend-options {
+            display: flex;
+            justify-content: space-between;
+            width: 95px;
+            .like {
+              width: 18px !important;
+              transition: all 0.3s;
+            }
+            .menu-vert {
+              width: 18px !important;
+              opacity: 0;
+              transition: all 0.3s;
+            }
+          }
+          &:hover {
+            background: $orange;
+            .like,
+            .menu-vert {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+    #playlists-main-container {
+      grid-column: 2 / 3;
+      margin-top: 20px;
+      margin-left: 10px;
+      position: relative;
+      height: 540px;
+      overflow: scroll;
+      .section-header {
+        position: sticky;
+        top: 0;
+        background-color: #2b2b2b;
+      }
+      .playlists {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        cursor: pointer;
+        // max-width: 490px;
+        // margin: 0 auto;
+        .playlist {
+          width: 217.79px;
+          height: 140px;
+          border-radius: 10.3155px;
+          position: relative;
+          margin-bottom: 15px;
+          flex-basis: 45%;
+          .playlist-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 10.3155px;
+          }
+
+          .playlist-name {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 40px;
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-align: center;
+            line-height: 140%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 0.143851px;
+            background: linear-gradient(
+              180deg,
+              rgba(255, 255, 255, 0.4) 0%,
+              rgba(255, 255, 255, 0.1) 100%
+            );
+            box-shadow: 0px 4.12621px 20.6311px -1.03155px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(20.6311px);
+            border-radius: 0px 0px 10.3155px 10.3155px;
+          }
+        }
+      }
+    }
+    .wrapper {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      grid-template-columns: 1fr 0.48fr;
+    }
+  }
+  #Home-main-phone-screen {
+    display: none;
+  }
+  .no-playlist {
+    font-size: 20px;
+    font-weight: 800;
+    font-family: 'Poppins';
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 30vh;
+  }
+}
+.input-field {
+  display: none !important;
+}
+.home-input {
+  display: none !important;
+
+}
+.none{
+  display: none;
+}
+.playlist-background {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(69, 5, 194, 0.5) 20%,
+    rgba(255, 0, 0, 0) 80%
+  );
+}
+
+@media screen and (min-device-width: 1024px) {
+  #home-page-container {
+    #Home-main-phone-screen {
+      display: none !important;
+    }
+  }
+}
+
+@media screen and (max-device-width: 1024px) {
+  #home-page-container {
+    padding: 0 25px;
+    background-color: #2b2b2b;
+    #homepage-center {
+      display: none !important;
+    }
+    #Home-main-phone-screen {
+      display: flex;
+      margin-left: 310px !important;
+    }
+  }
+}
+
+@media screen and (max-device-width: 461px) {
+  #home-page-container {
+    #Home-main-phone-screen {
+      margin-left: 0px !important;
+    }
+  }
+}

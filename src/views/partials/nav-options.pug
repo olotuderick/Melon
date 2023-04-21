@@ -1,0 +1,23 @@
+nav.top-nav-bar
+  div.search 
+    .chevrons
+        div.chevron
+            img(src="/uploads/icons/chevron-left.svg")
+        div.chevron
+            img(src="/uploads/icons/chevron-right.svg")
+            
+  div.nav-options
+      //- button.notification-bell
+      //-     img(src="/uploads/icons/bell.svg")
+      div.personal-info-and-notification.dropdown
+        button.dropdown-toggle(type="button")
+            img(src=user.avatarUrl || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" ).profile-picture
+            span.personal-data.dropdown-toggle= user.firstname  
+            img(src="/uploads/icons/chevron-down.svg").dropdown-toggle
+        ul.dropdown-menu
+            li
+                a.dropdown-item(href="/logout") Logout
+
+
+//- block scripts 
+//-     script(src="/static/js/search.js")

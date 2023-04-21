@@ -1,0 +1,38 @@
+extends ../base
+
+block content
+
+  header#melon-main-body-header
+    a(href="/main-body")
+      div.logo
+        img(src="/uploads/icons/chevron-left.svg").back-btn
+        img(src="/uploads/Melon.png")
+        h1#melon-heading Melon Music
+    h1.phone-head Login to your account
+    a(href="/authentication")#auth-page-login Sign Up
+
+
+  main.auth-main-screen 
+    section 
+    section
+      .forms-div
+        hgroup
+          img(src="/uploads/Melon.png")
+          h2 Please login to continue
+        form#column-form.password-form(method="POST")
+          input(type="text" placeholder="Username" name="username" value=`${username ? username : ""}`)
+          if usernameErr
+            span.email-err #{usernameErr}
+          input(type="password" placeholder="Password" name="password" value=`${password ? password : ""}`)
+          if passwordErr 
+            span.password-err #{passwordErr}
+          button Log In
+
+
+      .or-column
+        div
+        span or 
+        div
+      a(href="/auth/google")
+        div.google-icon 
+            img(src="https://imgs.search.brave.com/CCxIKOJMgFeXqwuYyO5BxbrYabKsQQju_Yixw4z55S8/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2Uy/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5I/RzZYdHpJeGY0TmJv/X3ZadDhUM0VBSGFI/YSZwaWQ9QXBp", alt="")

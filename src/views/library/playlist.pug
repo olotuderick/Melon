@@ -1,0 +1,96 @@
+extends ../base
+include ../partials/playlist-popup
+include ../partials/aside
+include ../partials/phone-navigation
+
+block content 
+    +Aside(userPlaylists)
+    #home-page-container.normal-screen.playlist-main-page-container
+        +PhoneNavigation(`${pageTitle}`)
+        div.playlist-background.playlist-main-songs-component
+            include ../partials/nav-options
+            section#now-playing-playlist 
+                if songType === "favourites" || songType === "UserPlaylist"
+                    div.img
+                        img(src="/uploads/images/dj-mixer.png", alt="")
+                if songType === 'apiPlaylist' 
+                    div.img
+                        img(src=selected.picture_medium)
+                if songType === 'album'
+                    div.img
+                        img(src=selected.cover_medium)
+                if songType === "artist"
+                    div.img
+                        img(src=selected.picture_medium, alt="")
+                div.now-playing-details
+                    if songType === "favourites"
+                        span.playlist-type Liked Songs
+                    if songType === "UserPlaylist"
+                        span.playlist-type Playlist
+                    if songType === "artist"
+                        span.playlist-type Artist
+                    if songType === 'album'
+                        span.playlist-type Album
+                    if songType === 'apiPlaylist' 
+                        span.playlist-type Public playlist
+                    
+                    span.playlist-name #{pageTitle} 
+            section#playlist-controller 
+                div.playlist-left-options.play-control#toogle-play-song
+                    img(src="/uploads/icons/play-icon.svg")#play-song-icon
+            header.songlist-header
+                span Title
+                span Album
+            main#general-song-list
+                for song in allSongs
+                    div.single-song-main-holder
+                        div.specific-song.track(data-track-id=`${songType === "favourites" ? song.likedSong.songId : songType === "UserPlaylist" ? song.songId : song.id}`)
+                            .specific-song-img
+                                if songType === "favourites"
+                                    img(src=song.likedSong.coverSmall)
+                                else if songType === "UserPlaylist"
+                                    img(src=song.coverSmall)
+                                else 
+                                    img(src=song.album.cover_small || song.artist.picture_small)
+                                div.specific-song-details
+                                    if songType === "favourites"
+                                        span.specific-song-name #{song.likedSong.songName}
+                                        a(href=`/artist/${song.likedSong.artistId}`).specific-artist-name #{song.likedSong.songArtist}
+                                    else if songType === "UserPlaylist"
+                                        span.specific-song-name #{song.songName}
+                                        a(href=`/artist/${song.artistId}`).specific-artist-name #{song.songArtist}
+                                    else
+                                        span.specific-song-name #{song.title}
+                                        a(href=`/artist/${song.artist.id}`).specific-artist-name #{song.artist.name}
+                            .album-name 
+                                if songType === "favourites"
+                                    a(href=`/albums/${song.likedSong.albumId}`) #{song.likedSong.songAlbum}
+                                if songType === "UserPlaylist"
+                                    a(href=`/albums/${song.albumId}`) #{song.songAlbum}
+                                if songType === 'apiPlaylist'
+                                    a(href=`/albums/${song.album.id}`) #{song.album.title}
+                                if songType === 'artist'
+                                    a(href=`/albums/${song.album.id}`) #{song.album.title}
+                        div.single-song-more-actions
+                            if songType === "favourites"
+                                img(src="/uploads/icons/heart-fill.svg")(data-song-id=song.likedSong.songId)#remove-from-favourite
+                            else 
+                                img(src="/uploads/icons/favourite.svg")#favourite-song-icon(data-song-obj=song)
+
+                            if songType === "favourites"
+                                span#song-duration #{song.likedSong.songDuration}
+                            else if songType === "UserPlaylist"
+                                span#song-duration #{song.songDuration}
+                            else
+                                span#song-duration #{song.duration}
+                            button#openBtn
+                                if songType === "favourites"
+                                    img(src="/uploads/icons/add_circle.svg")(data-song-obj=song.likedSong)
+                                if songType !== "favourites"
+                                    img(src="/uploads/icons/add_circle.svg")(data-song-obj=song)
+            
+        include ../partials/phone-nav-bottom
+    include ../mixins/music-player
+    include ../music/full-screen-player
+
+block scripts 

@@ -1,0 +1,91 @@
+.trend-country-name{
+  width: fit-content !important;
+}
+
+@media only screen and (max-device-width: 460px) {
+  .playlist-screen-side {
+    display: none;
+  }
+  #phone-trends-wrapper {
+    display: flex;
+    margin-top: 240px; 
+    .phone-trends-header {
+      font-weight: 700;
+      font-size: 50px;
+      line-height: 120%;
+      align-items: center;
+      letter-spacing: 0.01em;
+      margin-bottom: 20px;
+      margin-left: -575px;
+    }
+    .phone-trends-liked {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 17px;
+      .trended-songs-div {
+        background-image: url('http://localhost:4000/uploads/images/headphones.jpg');
+        width: 90%;
+        height: 30vh;
+        border-radius: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 0px 20px;
+        margin-bottom: 65px;
+        div {
+          h4 {
+            font-size: 30px;
+          }
+          span {
+            font-size: 28px;
+          }
+        }
+      }
+      .trend-card_carrier {
+        width: 95%;
+        height: 40vh;
+        background-color: $bg;
+        margin-bottom: 65px;
+        padding: 0px 5px;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &:hover {
+          background-color: $orange;
+        }
+        .trend-data-carrier {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          width: 950px;
+          .carrier_image {
+            width: 95%;
+            height: 35vh;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            object-fit: fill;
+            object-position: top;
+          }
+
+          .trend-carrier-info {
+            width: 50%;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-device-width: 461px) {
+  #phone-trends-wrapper {
+    display: none !important;
+  }
+}

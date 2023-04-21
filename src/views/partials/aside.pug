@@ -1,0 +1,40 @@
+mixin Aside(userPlaylists)
+    aside#main-menu
+        a(href="/main-body")
+        div.logo-wrapper
+            div.logo
+                img(src="/uploads/Melon.png")
+                h1#melon-heading Melon Music
+        div#main-menu-content
+            .main-menu-content-header 
+                a(href=`/`) Home
+            .main-menu-content-data 
+                img(src="/uploads/icons/chart.png")
+                a(href="/trend") Top Charts
+            .main-menu-content-data 
+                img(src="/uploads/icons/search.svg")
+                a(href="/search") Search
+            //- .main-menu-content-data
+            //-     img(src="/uploads/icons/users.svg")
+            //-     a(href="#") Artist
+        div#main-menu-content
+            .main-menu-content-header 
+                a(href=`/library/`) My Library
+            .main-menu-content-data 
+                img(src="/uploads/icons/star.svg")
+                a(href="/favourites") Favourite Song
+        div#main-menu-content
+            .main-menu-content-header 
+                a Playlist
+                button#openBtn
+                    img(src="/uploads/icons/add_circle.svg")(data-song-obj="empty-playlist")
+            for userPlaylist in userPlaylists
+                .main-menu-content-data#aside-playlists-container
+                    a(href=`/playlist/${userPlaylist._id}`)=userPlaylist.playlistName
+        div#playing-music_details-tablet
+            div.music-details.music-details-tablet
+                div.music-cover 
+                    img(src="https://img.icons8.com/small/512/cd.png").playing-music-cover
+                div.music-description
+                    h2.music-name.playing-music-name 
+                    span.music-artist.playing-music-artist

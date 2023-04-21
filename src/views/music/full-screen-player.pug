@@ -1,0 +1,52 @@
+include ../partials/phone-navigation
+main#full-screen-player-main-container
+  +PhoneNavigation("Melon")
+
+  div.logo-wrapper
+      div.logo
+          img(src="/uploads/Melon.png")
+          h1#melon-heading Melon Music
+  
+  div.main-music-player-container
+    div.currently-playing-overview-column
+      div#phone-full-screen-blured-image
+      div.currently-playing-details-holder
+        img(alt="").currently-playing-cover-image
+        div.currently-playing-details
+          h3.full-screen-player-song-name
+          p.full-screen-player-artist
+      img(src="/uploads/icons/share.svg", alt="").share-icon
+    
+    div.currently-playing-player
+      div.music-input_length#full-screen-player-time-bar
+        span.current-time.playing-current-time 0:00
+        input.music-range.song-progress#full-screen-music-range(type='range' min='0' max='100' value='0')
+        span.total-time.playing-total-time 0:00
+      
+      div.player-controls#full-screen-player-controls
+        div.full-screen-like-container
+          img(src="/uploads/icons/favourite.svg")
+
+        div.player-actions
+          div.shuffle-control
+            svg(width='25' height='26' viewbox='0 0 25 26' fill='none' xmlns='http://www.w3.org/2000/svg')
+              path(d='M9.92144 17.5181L10.6866 16.1394C10.8702 15.8089 10.7784 15.3816 10.4826 15.1765C10.1918 14.9714 9.80412 15.074 9.62049 15.4044L8.85534 16.7832C7.46786 19.2843 5.48868 20.72 3.41767 20.72H0.622322C0.275454 20.72 0 21.0334 0 21.4208C0 21.8082 0.280555 22.1216 0.622322 22.1216H3.42277C5.93756 22.1102 8.30443 20.4352 9.92144 17.5181Z' fill='#818181')
+              path(d='M24.8109 4.09503L21.7809 0.705105C21.5361 0.431632 21.1433 0.431632 20.8984 0.705105C20.6536 0.978578 20.6536 1.41727 20.8984 1.69075L22.8674 3.88993C22.8623 3.88993 22.8623 3.88993 22.8572 3.88993H19.965C17.4553 3.88993 15.0833 5.56495 13.4663 8.482L12.997 9.3309C12.8134 9.66135 12.9052 10.0887 13.201 10.2938C13.3031 10.3621 13.4153 10.3963 13.5275 10.3963C13.7366 10.3963 13.9407 10.2767 14.058 10.0659L14.5273 9.21696C15.9148 6.71582 17.894 5.28578 19.965 5.28578H22.8521C22.8572 5.28578 22.8572 5.28578 22.8623 5.28578L20.8933 7.48496C20.6485 7.75843 20.6485 8.19713 20.8933 8.4706C21.0158 8.60734 21.1739 8.67571 21.3371 8.67571C21.5004 8.67571 21.6585 8.60734 21.7809 8.4706L24.816 5.08067C25.0558 4.8072 25.0558 4.36281 24.8109 4.09503ZM23.4795 4.5964C23.4795 4.5907 23.4795 4.5907 23.4795 4.585C23.4795 4.57931 23.4795 4.57931 23.4795 4.57361L23.4898 4.585L23.4795 4.5964Z' fill='#818181')
+              path(d='M20.8937 25.2951C21.0161 25.4318 21.1742 25.5002 21.3375 25.5002C21.5007 25.5002 21.6588 25.4318 21.7813 25.2951L24.8164 21.9052C25.0612 21.6317 25.0612 21.193 24.8164 20.9195L21.7813 17.5353C21.5364 17.2618 21.1436 17.2618 20.8988 17.5353C20.6539 17.8088 20.6539 18.2475 20.8988 18.5209L22.8678 20.7201C22.8627 20.7201 22.8627 20.7201 22.8576 20.7201H20.0571C17.9912 20.7201 16.0069 19.2844 14.6195 16.7833L10.0184 8.48221C8.40135 5.55946 6.02938 3.89014 3.51969 3.89014H0.622322C0.275454 3.89014 0 4.20349 0 4.59091C0 4.97833 0.280555 5.29169 0.622322 5.29169H3.51459C5.58049 5.29169 7.56478 6.72742 8.95225 9.22286L13.5534 17.5239C15.1704 20.4467 17.5423 22.1217 20.052 22.1217H22.8525C22.8576 22.1217 22.8576 22.1217 22.8627 22.1217L20.8937 24.3209C20.6539 24.5829 20.6539 25.0216 20.8937 25.2951ZM23.4799 21.4038L23.4901 21.4152L23.4799 21.4266C23.4799 21.4209 23.4799 21.4209 23.4799 21.4152C23.4799 21.4095 23.4799 21.4095 23.4799 21.4038Z' fill='#818181')
+          img(src="/uploads/icons/prev.svg").prev-control#prev-control
+          div.play-control#toogle-play-song
+            audio#audioElement
+            img(src="/uploads/icons/play-icon.svg")#play-song-icon
+          img(src="/uploads/icons/next.svg").next-control#next-control
+          div.repeat-control
+            img(src="/uploads/icons/repeat.svg")
+        
+        div.right-options
+          img(src="/uploads/icons/volume-up.svg")#toogle-mute
+          input.music-range.full-screen-volume-range(type='range' min="0" max="1" step="0.01" value="0.0")#volumeSlider
+          img(src="/uploads/icons/minimize.svg", alt="")#go-to-main-screen
+
+  include ../partials/phone-nav-bottom
+
+block scripts 
+  script(src="/static/js/FullscreenPlayer.js")

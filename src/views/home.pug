@@ -1,0 +1,61 @@
+extends base
+include mixins/phone-home-screen
+include partials/playlist-popup
+include partials/aside
+include partials/phone-navigation
+
+block content
+    #home-page-container
+        +HomeScreenPhone(trendingArtists, playlists, trendingSongs)
+        div.normal-screen
+            +PhoneNavigation("Home")
+            +Aside(userPlaylists)
+            section#homepage-center
+                include partials/nav-options
+                section.wrapper
+                    section.new-albums
+                        div.section-header
+                            h1.head Trending Artists
+                            a(href="#").see-more See more
+                        section.albums
+                            for artist in trendingArtists
+                                a(href=`/artist/${artist.id}`) 
+                                    div.album
+                                        img(src=artist.picture_medium).album-cover
+                                        div.album-description
+                                            h1.album-name #{artist.name}
+                                            span.album-artists Click here to visit this artist's track list 
+                    section.top-trending.bottom
+                        div.section-header
+                            h1.head Top 20 Trends
+                            a(href="/trend").see-more See more
+                        for song in trendingSongs
+                            article.trends
+                                div.trend
+                                    div.trend-head.track(data-track-id=song.id)
+                                        img(src=song.album.cover_small).trend-cover
+                                        div.trend-description
+                                            h2.trend-name #{song.title}
+                                            span.trend-artist #{song.artist.name}
+                                    div.trend-options
+                                        img(src="/uploads/icons/heart.svg")#favourite-song-icon.like(data-song-obj=song)
+                                        span.trend-length#song-duration #{song.duration}
+                                        button#openBtn(type='button')
+                                            img(src="/uploads/icons/add_circle.svg")(data-song-obj=song)
+                    section#playlists-main-container
+                        div.section-header
+                            h1.head Playlist
+                            a(href="#").see-more See more
+                        article.playlists
+                            if userPlaylists
+                                for playlist in userPlaylists
+                                    a(href=`/playlist/${playlist._id}`).playlist
+                                        img(src="/uploads/images/dj-mixer.png").playlist-cover
+                                        div.playlist-name= playlist.playlistName
+                            else 
+                                div.no-playlist Your playlists will appear here
+
+        include partials/phone-nav-bottom
+    include mixins/music-player
+
+    include music/full-screen-player

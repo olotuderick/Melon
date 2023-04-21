@@ -1,0 +1,23 @@
+extends base
+
+block content
+  main#main-screen-404-page
+    header.logo-wrapper-404
+      img(src="/uploads/Melon.png")
+      h1 Melon Music
+
+    div.bubble-decoration-404.top-left-bubble-404
+    div.bubble-decoration-404.top-right-bubble-404
+      img(src="/uploads/quarter.svg", alt="")
+
+    img(src="/uploads/phone-quarter-big.svg", alt="").phone-only-bubbles-404.top-right-phone-bubble-404
+
+    section#content-container-404 
+      article.text-container-404
+        p.lost-text-404=message 
+        h2.text-404 404
+      a(href=linkUrl).redirect-link-404=linkText
+    
+    img(src="/uploads/phone-quarter-small.svg", alt="").phone-only-bubbles-404.bottom-left-phone-bubble
+
+    div.bubble-decoration-404.bottom-left-bubble-404
